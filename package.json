@@ -1,0 +1,44 @@
+{
+    "name": "TamazightWordBit",
+    "version": "1.0.0",
+    "description": "Tu veux apprandre tamazight. On est la pour toi. on t'aide a apprandre on te aidras avec des quize(comme un jeux) pour mieux se raplait",
+    "main": "index.js",
+    "scripts": {
+        "start": "electron .",
+        "test": "nodemon app.js",
+        "dist": "build"
+    },
+    "repository": "https://github.com/electron/electron-quick-start",
+    "keywords": [
+        "Electron",
+        "quick",
+        "start",
+        "tutorial",
+        "demo"
+    ],
+    "author": "GitHub",
+    "license": "CC0-1.0",
+    "build": {
+        "appId": "com.mekki.facture",
+        "win": {
+            "target": "nsis",
+            "icon": "src/icon.ico"
+        }
+    },
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "client-sessions": "^0.8.0",
+        "connect-mysql": "^2.2.5",
+        "cookie-parser": "^1.4.4",
+        "ejs": "^2.6.1",
+        "express": "^4.16.4",
+        "express-session": "^1.16.1",
+        "express-socket.io-session": "^1.3.5",
+        "md5": "^2.2.1",
+        "mysql": "^2.16.0",
+        "socket.io": "^2.2.0"
+    },
+    "devDependencies": {
+        "electron": "^6.0.0-beta.11"
+    }
+}

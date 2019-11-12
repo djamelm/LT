@@ -1,0 +1,91 @@
+<!-- Footer -->
+<script charset="utf-8" src="/assets/libs/jquery.js"></script>
+<script charset="utf-8" src="/assets/libs/vue.js"></script>
+<script charset="utf-8" src="/assets/js/index.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+function close_search(a){
+    var close_btn = $(a + ">#search_close"),
+        input_search = $(a + ">#search_input"),
+        input = $(a + ">#search_input>input"),
+        result_search = $(a + ">#search_input>#result")
+    input.addClass('w3-hide')
+    input_search.css('width', '42.5px')
+    result_search.css('width', '0px')
+    close_btn.removeClass('w3-rotate360')
+    close_btn.addClass('w3-rotate0')
+    close_btn.css('margin', '10px -42.5px')
+}
+function open_search(a){
+    var close_btn = $(a + ">#search_close"),
+        input_search = $(a + ">#search_input"),
+        input = $(a + ">#search_input>input"),
+        result_search = $(a + ">#search_input>#result")
+    input.removeClass('w3-hide')
+    input_search.css('width', '')
+    result_search.css('width', '')
+    close_btn.removeClass('w3-rotate0')
+    close_btn.addClass('w3-rotate360')
+    close_btn.css('margin', '10px')
+}
+/*$('#search_input').on('focus', function(){
+    $('#search_input>')
+}*/
+</script>
+<script>
+$(() => {
+    var socket = io()
+    socket.on('console', (msg) => {
+        console.log(msg)
+    })
+    var vm=new vue({
+        el:"#app",
+        data:{
+            found:[
+                {
+                    ar: "سلام",
+                    fr: "salut",
+                    en: "hello",
+                    tm: "azul"
+                }
+            ]
+        }
+    })
+    socket.on('tirage', (msg) => {
+        var langue1 = $('body').attr('data-lang')
+        var langue2 = $('body').attr('data-langl')
+        $('#quiz').removeClass('w3-hide')
+        $('#result_err').addClass('w3-hide')
+        $('#response').addClass('w3-hide')
+        var mot = msg.mot[0].mot;
+        $('[data-text=qst]').text(mot.tm).attr('data-value', mot[langue1])
+        $('[data-text=response]').text(mot[langue1])
+        jQuery.each(msg.classment, function(key, value){
+            $('[data-text=btn'+(key+1)+']').text(msg.mot[value].mot[langue1]).attr('value', msg.mot[value].mot[langue1])
+        })
+        jQuery.each(msg.mot[0].phrase, function(key, value){
+            $('[data-text=ph'+(key+1)+']').removeClass('w3-hide')
+            $('[data-text=ph'+(key+1)+'] [data-text=fr]').text(value[langue1])
+            $('[data-text=ph'+(key+1)+'] [data-text=tm]').text(value[langue2])
+        })
+    })
+    $('button#rep').click(function(){
+        $('#quiz').addClass('w3-hide')
+        if ($(this).val() === $('[data-text=qst]').attr('data-value')) {
+            $('#response').removeClass('w3-hide')
+        } else {
+            $('#result_err').removeClass('w3-hide')
+        }
+    })
+    $('button#btn_response').click(function(){
+        $('#quiz').addClass('w3-hide')
+        $('#result_err').addClass('w3-hide')
+        $('#response').removeClass('w3-hide')
+    })
+
+    $('button#next').click(function(){
+        socket.emit('tirage', true);
+    })
+});
+</script>
+<!-- /Footer -->

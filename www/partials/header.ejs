@@ -1,0 +1,34 @@
+<!-- Header -->
+<section class="w3-top w3-white" style="position: sticky;">
+    <!-- ==================== Bar haut ==================== -->
+    <div class="w3-large w3-content">
+        <div class="w3-left w3-bar-item w3-button w3-padding-16">
+            <a href="#">
+                Logo
+            </a>
+        </div>
+        <div class="w3-dropdown-hover">
+            <input class="w3-bar-item w3-border-0 w3-border-buttom w3-bottombar w3-border-blue" style="padding: 11px;">
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a v-for="result in found" class="w3-bar-item w3-button">
+                    <span>{{ result.tm }}</span></br>
+                    <span class='w3-text-gray'>{{ result.fr }}</span>
+                </a>
+            </div>
+        </div>
+        <div class="w3-bar-item w3-button w3-padding-16">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="w3-right">
+            <div class="w3-bar-item w3-button w3-padding-16">
+                <a href="/hestory">
+                    <i class="fas fa-history"></i>
+                </a>
+            </div>
+            <div class="w3-bar-item w3-button w3-padding-16">
+                <a href="/cogs"><i class="fas fa-cogs"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Header -->
