@@ -39,30 +39,17 @@ var func_tirage = ()=>{
     var num = tirage(4, data.length);
     var classment = tirage(4, 4)
     return {
-        "mot": [
-            data[num[0]],
-            data[num[1]],
-            data[num[2]],
-            data[num[3]]
+        "word": [
+            data[num[0]].word,
+            data[num[1]].word,
+            data[num[2]].word,
+            data[num[3]].word
         ],
+        "sentence": data[num[0]].sentence,
         "classment": classment
     }
 }
 module.exports = (app, io) => {
-    // Express
-    app.get('/json/quiz', (req, res) => {
-        var num = tirage(4, data.length);
-        var classment = tirage(4, 4)
-        res.json({
-            "mot": [
-                data[num[0]],
-                data[num[1]],
-                data[num[2]],
-                data[num[3]]
-            ],
-            "classment": classment
-        })
-    })
 
     // socket.io
     io.on('connection', (socket) => {

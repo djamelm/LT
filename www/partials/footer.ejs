@@ -38,7 +38,7 @@ $(() => {
     socket.on('console', (msg) => {
         console.log(msg)
     })
-    var vm=new vue({
+    var vm=new Vue({
         el:"#app",
         data:{
             found:[
@@ -48,10 +48,38 @@ $(() => {
                     en: "hello",
                     tm: "azul"
                 }
-            ]
+            ],
+            quiz:{},
+            reponse: false,
+            reponse_test: true
+        },
+        methods:{
+            request: function(n){
+                a=this.quiz.classment[n]
+                if(a==0){
+                    this.reponse = true
+                    this.reponse_test = true
+                }else{
+                    this.reponse = true
+                    this.reponse_test = false
+                }
+            },
+            retray: function(n){
+                this.reponse = false
+                this.reponse_test = true
+                socket.emit('tirage', true);
+            },
+            show: function(n){
+                this.reponse = true
+                this.reponse_test = true
+            }
         }
     })
     socket.on('tirage', (msg) => {
+        vm.quiz = msg
+    })
+    /*socket.on('tirage', (msg) => {
+        console.log(msg)
         var langue1 = $('body').attr('data-lang')
         var langue2 = $('body').attr('data-langl')
         $('#quiz').removeClass('w3-hide')
@@ -85,7 +113,7 @@ $(() => {
 
     $('button#next').click(function(){
         socket.emit('tirage', true);
-    })
+    })*/
 });
 </script>
 <!-- /Footer -->

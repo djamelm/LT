@@ -1,12 +1,12 @@
 module.exports = [
     {
-        mot: {
+        word: {
             ar: "",
             fr: "salut",
             en: "hello",
             tm: "azul"
         },
-        phrase: [
+        sentence: [
             {
                 ar: "",
                 fr: "salut les amis",
@@ -18,13 +18,13 @@ module.exports = [
         amazigh_langs: ['tqbaylit']
     },
     {
-        mot: {
+        word: {
             ar: "",
             fr: "paix",
             en: "",
             tm: "talwit"
         },
-        phrase: [
+        sentence: [
             {
                 ar: "",
                 fr: "je vous laisse en paix",
@@ -36,13 +36,13 @@ module.exports = [
         amazigh_langs: ['tqbaylit']
     },
     {
-        mot: {
+        word: {
             ar: "",
             fr: "espoir",
             en: "",
             tm: "assirem"
         },
-        phrase: [
+        sentence: [
             {
                 ar: "",
                 fr: "il faut que l'espoir existe",
@@ -54,13 +54,13 @@ module.exports = [
         amazigh_langs: ['tqbaylit']
     },
     {
-        mot: {
+        word: {
             ar: "",
             fr: "la terre",
             en: "",
             tm: "akal"
         },
-        phrase: [
+        sentence: [
             {
                 ar: "",
                 fr: "les amazighs ont defendu leur terre",
@@ -72,13 +72,13 @@ module.exports = [
         amazigh_langs: ['tqbaylit']
     },
     {
-        mot: {
+        word: {
             ar: "",
             fr: "pays",
             en: "",
             tm: "tamurt"
         },
-        phrase: [
+        sentence: [
             {
                 ar: "",
                 fr: "il faut qu'on change de pays",
@@ -90,13 +90,13 @@ module.exports = [
         amazigh_langs: ['tqbaylit']
     },
     {
-        mot: {
+        word: {
             ar: "",
             fr: "pouvoir",
             en: "",
             tm: "adabu"
         },
-        phrase: [
+        sentence: [
             {
                 ar: "",
                 fr: "notre pouvoir est illégitime",
@@ -108,13 +108,13 @@ module.exports = [
         amazigh_langs: ['tqbaylit']
     },
     {
-        mot: {
+        word: {
             ar: "",
             fr: "apprandre",
             en: "",
             tm: "lmed"
         },
-        phrase: [
+        sentence: [
             {
                 ar: "",
                 fr: "j'apprandre l'amazigh",
