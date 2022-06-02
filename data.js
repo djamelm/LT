@@ -124,5 +124,23 @@ module.exports = [
         ],
         keyword: ['lvl1','lvl2'],
         amazigh_langs: ['tqbaylit']
+    },
+    {
+        word: {
+            ar: "",
+            fr: "savoir",
+            en: "",
+            tm: "thesnethd"
+        },
+        sentence: [
+            {
+                ar: "",
+                fr: "tu ne sais pas",
+                en: "",
+                tm: "ou thessindhara"
+            }
+        ],
+        keyword: ['lvl1','lvl2'],
+        amazigh_langs: ['tqbaylit']
     }
 ]

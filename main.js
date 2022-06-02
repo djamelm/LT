@@ -1,7 +1,7 @@
 //.fvs
 const { app, BrowserWindow, Menu, MenuItem } = require('electron')
 let mainWindow
-const theApp = require('./app');
+const theApp = require('./index');
 
 function createWindow() {
     mainWindow = new BrowserWindow({
@@ -17,9 +17,9 @@ function createWindow() {
             nodeIntegration: true
         }
     })
-    mainWindow.setMenu(null);
+    //mainWindow.setMenu(null);
     //mainWindow.loadFile('src/index.html')
-    mainWindow.open('localhost:10')
+    mainWindow.loadURL('http://localhost:80/')
     mainWindow.on('closed', function() {
         mainWindow = null
     })

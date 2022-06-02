@@ -1,34 +1,58 @@
 <!-- Header -->
-<section class="w3-top w3-white" style="position: sticky;">
-    <!-- ==================== Bar haut ==================== -->
-    <div class="w3-large w3-content">
-        <div class="w3-left w3-bar-item w3-button w3-padding-16">
-            <a href="#">
-                Logo
-            </a>
-        </div>
-        <div class="w3-dropdown-hover">
-            <input class="w3-bar-item w3-border-0 w3-border-buttom w3-bottombar w3-border-blue" style="padding: 11px;">
-            <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                <a v-for="result in found" class="w3-bar-item w3-button">
-                    <span>{{ result.tm }}</span></br>
-                    <span class='w3-text-gray'>{{ result.fr }}</span>
+<header>
+    <nav class="py-4 w-full bg-white">
+        <div class="flex mx-auto max-w-screen-xl flex-row justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <a href="" class="flex">
+                    <span class="inline-block w-32 h-10 bg-purple-200 rounded-lg"></span>
                 </a>
+                <form class="hidden mb-0 lg:flex relative inline-block">
+                    <div @mouseover="search.suggestion.show = true" @mouseleave="search.suggestion.show = false" @keydown="search_data"
+                        class="relative">
+                        <input class="h-10 pr-10 pl-4 text-sm placeholder-purple-300 border-2 border-purple-200 bg-purple-100 rounded-lg focus:z-10 w-[250px]"
+                            placeholder="Search..." v-model="search.input" type="text">
+
+                        <button class="absolute inset-y-0 right-0 p-2 mr-px text-purple-600 rounded-r-lg" type="submit">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                        <transition enter-active-class="transition duration-300 ease-out transform"
+                            enter-class="-translate-y-3 scale-95 opacity-0"
+                            enter-to-class="translate-y-0 scale-100 opacity-100"
+                            leave-active-class="transition duration-150 ease-in transform"
+                            leave-class="translate-y-0 opacity-100" leave-to-class="-translate-y-3 opacity-0">
+                            <div v-if="search.suggestion.show" class="absolute pt-2 w-[250px]">
+                                <div class="relative py-1 bg-white border border-gray-200 rounded-md shadow-xl">
+                                    <div
+                                        class="absolute top-0 w-4 h-4 origin-center transform rotate-45 translate-x-5 -translate-y-2 bg-white border-t border-l border-gray-200 rounded-sm pointer-events-none">
+                                    </div>
+                                    <div class="relative">
+                                        <a v-for="result in search.suggestion.data"
+                                            class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out">
+                                            <span>{{ result.tm }}</span></br>
+                                            <span class='w3-text-gray'>{{ result.fr }}</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </transition>
+                    </div>
+                </form>
+            </div>
+            <div class="self-center flex items-center collapse collapsed left">
+                <div class="mr-3 block">
+                    <div>
+                        <button type="button"
+                            class="text-purple-600 hover:bg-purple-100 focus:outline-none focus:ring-4 focus:ring-purple-200 rounded-lg p-2.5 inline-flex items-center">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </button>
+                        <button type="button"
+                            class="text-purple-600 hover:bg-purple-100 focus:outline-none focus:ring-4 focus:ring-purple-200 rounded-lg p-2.5 inline-flex items-center">
+                            <i class="fa-solid fa-gears"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="w3-bar-item w3-button w3-padding-16">
-            <i class="fas fa-search"></i>
-        </div>
-        <div class="w3-right">
-            <div class="w3-bar-item w3-button w3-padding-16">
-                <a href="/hestory">
-                    <i class="fas fa-history"></i>
-                </a>
-            </div>
-            <div class="w3-bar-item w3-button w3-padding-16">
-                <a href="/cogs"><i class="fas fa-cogs"></i></a>
-            </div>
-        </div>
-    </div>
-</section>
+    </nav>
+</header>
 <!-- /Header -->

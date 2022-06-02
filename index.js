@@ -16,14 +16,16 @@ const port = 80
 var express = require('express')
 var app = express()
 var server = http.createServer(app).listen(port, () => {
-    var open = false
-    if (os.platform() == 'win32' && open) {
-        child_process.exec("start http://" + host + ":" + port)
-    } else if (os.platform() == 'darwin' && open) {
-        child_process.exec("open http://" + host + ":" + port)
-    } else if (os.platform() == 'linux' && open) {
-        child_process.exec("xdg-open http://" + host + ":" + port)
-    } else {
+    child_process.exec("npm run css")
+    if(false){
+        if (os.platform() == 'win32') {
+            child_process.exec("start http://" + host + ":" + port)
+        } else if (os.platform() == 'darwin') {
+            child_process.exec("open http://" + host + ":" + port)
+        } else if (os.platform() == 'linux') {
+            child_process.exec("xdg-open http://" + host + ":" + port)
+        }
+    }else{
         console.log(`Server is running @ http://${host}:${port}/ on ` + os.platform() + ``)
         console.log(`Open http://${host}:${port}/ in your browser`)
     }
@@ -40,47 +42,14 @@ var io = require('socket.io').listen(server, {
 // Route & Create server
 app.set('views', path.join(__dirname, '/www/views/'))
 app.use('/assets/', express.static(__dirname + '/www/assets/'))
-app.use('/Musique/', express.static('/root/Musique/'))
 app.use('/', express.static(__dirname + '/www/'))
 app.set('view engine', 'ejs')
 
 // More
-/*
 app.use((req, res, next) => {
-    if (req.session.flash) {
-        res.locals.flash = req.session.flash
-        req.session.flash = undefined
-    }
-    req.flash = (type, content) => {
-        if (req.session.flash === undefined) {
-            req.session.flash = {}
-        }
-        req.session.flash[type] = content
-    }
+    res.locals.pages = {}
     next()
-})*/
-app.use((req, res, next) => {/*
-    var session = req.session,
-        user = {}
-    //session.rn = '181837036538'; session.password = '16cdf0eaed80a35151a0340ef91a55bf'
-    */res.locals.pages = {}/*
-    if (session.rn == null) {
-        session.rn = undefined
-        session.password = undefined
-        next()
-    } else {
-        if (user.password === "masterm2ero" && ) {
-            session.rn = user.rn
-            session.password = user.password
-            res.locals.user = user
-        } else {
-            session.rn = undefined
-            session.password = undefined
-            res.locals.user = {}
-        }
-        */next()/*
-    }
-*/})
+})
 // More
 
 // ******** Start ********
@@ -92,9 +61,6 @@ require('./rooter/json')(app, io)
 io.on('connection', (socket) => {
     // Var
     var clientIp = socket.conn.remoteAddress
-    // var session = socket.handshake.session
-    // Var
-
     console.log(clientIp + ' est connecté.')
     io.emit('console', clientIp + ' est connecté.');
     socket.emit('console', 'tu est ' + clientIp + ' et tu est connecté.');
