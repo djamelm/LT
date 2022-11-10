@@ -42,7 +42,7 @@
         "socket.io": "^2.2.0"
     },
     "devDependencies": {
-        "electron": "^6.1.12",
+        "electron": "^18.3.7",
         "tailwindcss": "^3.0.24"
     }
 }
